@@ -1,0 +1,59 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.section__ingreso {
+    background: rgb(10,64,187);
+    background: linear-gradient(90deg, rgba(10,64,187,1) 0%, rgba(119,125,187,1) 30%, rgba(0,169,202,1) 70%, rgba(70,228,60,1) 100%);
+    height: 100vh;
+}
+.section__ingreso--container {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: whitesmoke;
+}
+.section__ingreso--title {
+    display: flex;
+    flex-direction: row;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+}
+.btn a {
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+.section__ingreso--title span {
+    color: whitesmoke;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+}
+.section__sucursal--container {
+    padding-top: 12rem;
+    display: flex;
+    justify-content: space-between;
+    width: 50rem;
+}
+.section__container--botton {
+    display: flex;
+    justify-content: center;
+    height: 3rem;
+    margin: 0 3rem;
+}
+.section__img img {
+    object-fit: contain;
+    height: 20rem;
+}
+.section__financiacion {
+    background: rgb(26,166,80);
+    background: linear-gradient(180deg, rgba(26,166,80,1) 0%, rgba(0,0,0,1) 24%);
+    height: 100vh;
+    color: whitesmoke;
+}
+.prueba {
+    display: flex;
+}
