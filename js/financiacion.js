@@ -34,83 +34,144 @@ class Tabla {
     this.condImp = condImp;
     this.tarjeta = tarjeta;
     this.cuotas = cuotas;
-
-    this.total = 0;
-    this.lasCuotas = 0;
-    this.diferencia = 0;
-    this.impuestos = 0;
   }
   impuestos() {
     if (this.condImp == "EMPRESA") {
       this.precio = this.precio * impEmpresa;
-    }
-    if (this.condImp == "INDIVIDUO") {
+      return this.precio;
+    } else if (this.condImp == "INDIVIDUO") {
       this.precio = this.precio * impIndividuo;
+      return this.precio;
     }
   }
-  coeficiente() {
-    switch (this.tarjeta) {
+  tarjeta(tarjeta) {
+    switch (tarjeta) {
       case "VISA": {
         if (this.cuotas == "all") {
-          if (this.cuotas == "Z") {
-            console.log("No posee");
-          } else if (this.cuotas == 3) {
-            this.total = this.precio * coeficienteUno;
-            break;
-          } else if (this.cuotas == 6) {
-            this.total = this.precio * coeficienteUno;
-            pbreak;
-          } else if (this.cuotas == 12) {
-            this.total = this.precio * coefVisaDoce;
-            break;
-          } else if (this.cuotas == 18) {
-            this.total = this.precio * coefVisaDieciocho;
-            break;
-          } else console.error("cuota no existe");
+        } else if (this.cuotas == "Z") {
+          console.log("No posee");
           break;
+        } else if (this.cuotas == 3) {
+          this.precio = this.precio * coeficienteUno;
+          console.log("tu total es de $ " + this.precio);
           break;
-        }
+        } else if (this.cuotas == 6) {
+          this.precio = this.precio * coeficienteUno;
+          console.log("tu total es de $ " + this.precio);
+          break;
+        } else if (this.cuotas == 12) {
+          this.precio = this.precio * coefVisaDoce;
+          console.log("tu total es de $ " + this.precio);
+          break;
+        } else if (this.cuotas == 18) {
+          this.total = this.precio * coefVisaDieciocho;
+          console.log("tu total es de $ " + this.precio);
+          break;
+        } else console.error("cuota no existe");
+        break;
       }
+
       case "MASTERCARD": {
         if (this.cuotas == "all") {
-          if ((this.cuotas = "Z")) {
-            console.log("No posee");
-          } else if (this.cuotas == 3) {
-            total = this.precio * coeficienteUno;
-            break;
-          } else if (this.cuotas == 6) {
-            total = this.precio * coeficienteUno;
-            break;
-          } else if (this.cuotas == 12) {
-            total = this.precio * coefMastDoce;
-            break;
-          } else if (this.cuotas == 18) {
-            total = this.precio * coefMastDieciocho;
-            break;
-          } else console.error("Error en el numero de cuotas");
+        } else if ((this.cuotas = "Z")) {
+          console.log("No posee");
           break;
+        } else if (this.cuotas == 3) {
+          this.precio = this.precio * coeficienteUno;
+          console.log("tu total es de $ " + this.precio);
+          break;
+        } else if (this.cuotas == 6) {
+          this.precio = this.precio * coeficienteUno;
+          console.log("tu total es de $ " + this.precio);
+          break;
+        } else if (this.cuotas == 12) {
+          this.precio = this.precio * coefMastDoce;
+          console.log("tu total es de $ " + this.precio);
+          break;
+        } else if (this.cuotas == 18) {
+          this.precio = this.precio * coefMastDieciocho;
+          console.log("tu total es de $ " + this.precio);
+          break;
+        } else {
+          console.error("Error en el numero de cuotas");
           break;
         }
       }
+
+      case "NARANJA": {
+        if (this.cuotas == "all") {
+        } else if ((this.cuotas = "Z")) {
+          this.precio = this.precio * coefNarZ;
+          console.log("tu total es de $ " + this.precio);
+          break;
+        } else if (this.cuotas == 3) {
+          console.error("Error en el numero de cuotas");
+          break;
+        } else if (this.cuotas == 6) {
+          this.precio = this.precio * coeficienteUno;
+          console.log("tu total es de $ " + this.precio);
+          break;
+        } else if (this.cuotas == 12) {
+          console.error("Error en el numero de cuotas");
+          break;
+        } else if (this.cuotas == 18) {
+          console.error("Error en el numero de cuotas");
+          break;
+        } else {
+          console.error("Error en el numero de cuotas");
+          break;
+        }
+      }
+
       case "SOL": {
         if (this.cuotas == "all") {
-          if (this.cuotas == "Z") {
-            console.log("No posee");
-          } else if (cuotas == 3) {
-            total = precio * coeficienteUno;
-            break;
-          } else if (cuotas == 6) {
-            total = precio * coefSolSeis;
-            break;
-          } else if (cuotas == 12) {
-            total = precio * coefSolDoce;
-            break;
-          } else if (cuotas == 18) {
-            total = precio * coefSolDieciocho;
-            break;
-          } else {
-            break;
-          }
+        } else if (this.cuotas == "Z") {
+          console.log("No posee");
+        } else if (cuotas == 3) {
+          total = precio * coeficienteUno;
+          console.log("tu total es de $ " + this.precio);
+          break;
+        } else if (cuotas == 6) {
+          total = precio * coefSolSeis;
+          console.log("tu total es de $ " + this.precio);
+          break;
+        } else if (cuotas == 12) {
+          total = precio * coefSolDoce;
+          console.log("tu total es de $ " + this.precio);
+          break;
+        } else if (cuotas == 18) {
+          total = precio * coefSolDieciocho;
+          console.log("tu total es de $ " + this.precio);
+          break;
+        } else {
+          console.error("Cuotas incorrectas");
+          break;
+        }
+      }
+      case "DPF": {
+        if (this.cuotas == "all") {
+        } else if (this.cuotas == "Z") {
+          console.log("No posee");
+          break;
+        } else if (this.cuotas == 3) {
+          this.precio = this.precio * coeficienteUn;
+          console.log("tu total es de $ " + this.precio);
+          break;
+        } else if (this.cuotas == 6) {
+          this.precio = this.precio * coefDpfSeis;
+          console.log("tu total es de $ " + this.precio);
+          break;
+        } else if (this.cuotas == 9) {
+          this.precio = this.precio * coefDpfNueve;
+          console.log("tu total es de $ " + this.precio);
+          break;
+        } else if (this.cuotas == 12) {
+          this.precio = this.precio * coefDpfDoce;
+          console.log("tu total es de $ " + this.precio);
+          break;
+        } else {
+          console.error("cuota no existe");
+          break;
         }
       }
       default: {
@@ -119,119 +180,12 @@ class Tabla {
       }
     }
   }
-  precioTotal() {
-    this.total = this.precio * this.tarjeta;
-  }
-  laDiferencia() {
-    this.lasCuotas = this.total / this.cuotas;
-  }
 }
 
-/*
- * Datos que necesito recibir.
- */
-// let disyuntiva = "";
-// let diferencia = null;
-// let lasCuotas = null;
-// let total = null;
-// let precio = null;
-// let cuotas = null;
-// let tarjetas = null;
-/*
- * Datos que el cliente necesita cargar, luego van a estar disponibles y enlazados en el html para mayor practicidad.
- */
-
-// funcion para obtener el Total averiguar como hacer que cuotas, en otras tarjetas se pueda cambiar y colocar en Z o 6 solamente como opciones en naranja en vez de 3 6 12 18. y averiguar como hacer que me pida cuotas por cada tarjeta.
-
-// while (disyuntiva != "ESC") {
-//   disyuntiva = prompt("Quieres realizar una operacion?\n SI - para Empezar\n ESC - Salir"
-//   );
-
-//   if (disyuntiva.toUpperCase() == "ESC") {
-//     break;
-//   } else if (disyuntiva.toUpperCase() == "SI") {
-//     tarjetas = prompt("Con que tarjeta deseas operar\n VISA\nMASTERCARD\nNARANJA\nSOL\nDPF");
-//     precio = prompt("Ingresa valor del equipo");
-//     cuotas = parseInt(prompt("Ingrese la cantidad de cuotas\n3\n6\n12\n18"));
-
-//     switch(tarjetas){
-//         case "VISA": {
-//             if(cuotas == 3){
-//                 total = (precio * coeficienteUno);
-//                 alert(`Tu total es $ ${total}`);
-//                 break;
-//             } else if (cuotas == 6){
-//                 total = (precio * coeficienteUno);
-//                 console.log(`Tu total es $ ${total}`);
-//                 break;
-//             }else if (cuotas == 12){
-//                 total = (precio * coefVisaDoce);
-//                 console.log(`Tu total es $ ${total}`);
-//                 break;
-//             }else if (cuotas == 18){
-//                 total = (precio * coefVisaDieciocho);
-//                 console.log(`Tu total es $ ${total}`);
-//                 break;
-//             } else
-//             console.error("Error en el numero de cuotas");
-//             break;
-//         }
-//         case "MASTERCARD": {
-//             if(cuotas == 3){
-//                 total = (precio * coeficienteUno);
-//                 console.log(`Tu total es $ ${total}`);
-//                 break;
-//             } else if (cuotas == 6){
-//                 total = (precio * coeficienteUno);
-//                 console.log(`Tu total es $ ${total}`);
-//                 break;
-//             }else if (cuotas == 12){
-//                 total = (precio * coefMastDoce);
-//                 console.log(`Tu total es $ ${total}`);
-//                 break;
-//             }else if (cuotas == 18){
-//                 total = (precio * coefMastDieciocho);
-//                 console.log(`Tu total es $ ${total}`);
-//                 break;
-//             } else
-//             console.error("Error en el numero de cuotas");
-//                 break;
-//         }
-//         case "SOL": {
-//             if(cuotas == 3){
-//                 total = (precio * coeficienteUno);
-//                 console.log(`Tu total es $ ${total}`);
-//                 break;
-//             } else if (cuotas == 6){
-//                 total = (precio * coefSolSeis);
-//                 console.log(`Tu total es $ ${total}`);
-//                 break;
-//             }else if (cuotas == 12){
-//                 total = (precio * coefSolDoce);
-//                 console.log(`Tu total es $ ${total}`);
-//                 break;
-//             }else if (cuotas == 18){
-//                 total = (precio * coefSolDieciocho);
-//                 console.log(`Tu total es $ ${total}`);
-//                 break;
-//             } else
-//             console.error("Error en el numero de cuotas");
-//                 break;
-//         }
-//         default: {
-//         console.error("operacion invalida");
-//         break;
-//       }
-//     }
-//   } else {
-//     console.error("operacion Invalida");
-//     break;
-//   }
-//   disyuntiva = prompt(
-//     "Quieres realizar una nueva operacion?\n SI - para Empezar\n ESC - Salir"
-//   );
-// }
-// console.log("Programa terminado.");
-// console.log(`El total del equipo es ${total}`);
-// console.log(`las cuotas son ${cuotas} de  ${division()}`);
-// console.log(`El interes total es de $ ${laDiferencia()}`);
+let nuevaConsulta = "";
+let precio = Number(prompt("Ingresa el precio del Equipo"));
+let condImp = prompt("Ingresa condicion impositiva\n EMPRESA\n INDIVIDUO");
+let tarjeta = prompt(
+  "Ingresa el medio de pago\n VISA\nMASTERCARD\nNARANJA\nSOL\nDPF"
+);
+let cuotas = prompt("Ingresa el numero de cuotas\n All\nZ\n3\n6\n12\n18");

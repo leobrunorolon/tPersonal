@@ -1,30 +1,34 @@
 // Ingreso de usuario y contraseña. usuario tiene que tener un length de 7 y includes "u". Contraseña debera tener al menos una letra mayuscula y tiene que ser al menos de 8 caracteres.
-// funciones
-function user(elDato) {
-  if (elDato.length == 7 && elDato.includes("u")) {
-    return true;
+
+class Usuario {
+  constructor(user, pass) {
+    this.user = user;
+    this.pass = pass;
   }
-  return false;
-}
-// todavia no se como hacer que verifique si por lo menos tiene una mayuscula.
-function clave(password) {
-  if (password.length >= 8) {
-    return true;
+  userExitoso() {
+    if (this.user.length == 7 && this.user.includes("u")) {
+      return true;
+    }
   }
-  return false;
+  laClave() {
+    if (this.pass.length >= 8) {
+      return true;
+    }
+  }
+  exitosoLogeo() {
+    if (this.userExitoso() == true && this.laClave() == true) {
+      return console.log("logeo exitoso");
+    } else {
+      return console.log(
+        "Usuario o contraseña Incorrecto. Intentalo nuevamente."
+      );
+    }
+  }
 }
-// variables
 
 let usuario = prompt("Ingresa tu usuario de lan");
-let pass = prompt("Ingresa tu contraseña.");
-// validacion
+let password = prompt("Ingresa tu contraseña.");
+const userUno = new Usuario(usuario, password);
+userUno.exitosoLogeo();
 
-if (user(usuario)) {
-  console.log("Usuario correcto");
-}
-console.error;
-
-if (clave(pass)) {
-  console.log("Contraseña exitosa");
-}
-console.error;
+// expreciones regulares.
