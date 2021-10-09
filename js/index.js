@@ -44,9 +44,9 @@ do {
 for (let i = 0; i < usuarios.length; i++) {
   console.log(i + "-" + usuarios[i]);
 }
-
+console.log(usuarios.sort());
 // usuarios.forEach((usuarioNuevo, i) => {
 //   console.log(i + "-" + usuarioNuevo);
 // });
 
-// expreciones regulares buscar.
+// expreciones regulares.
