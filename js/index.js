@@ -17,18 +17,36 @@ class Usuario {
   }
   exitosoLogeo() {
     if (this.userExitoso() == true && this.laClave() == true) {
-      return console.log("logeo exitoso");
+      return alert("Usuario creado exitosamente.");
     } else {
-      return console.log(
-        "Usuario o contraseña Incorrecto. Intentalo nuevamente."
+      return alert(
+        "Usuario o contraseña Incorrecto. Intentalo nuevamente.\nRecuerda que el usuario tiene u+legajo\n Y la contraseña tiene que ser de al menos 8 caracteres."
       );
     }
   }
 }
 
-let usuario = prompt("Ingresa tu usuario de lan");
-let password = prompt("Ingresa tu contraseña.");
-const userUno = new Usuario(usuario, password);
-userUno.exitosoLogeo();
+const usuarios = [];
+let disyuntiva = "";
+do {
+  let usuario = prompt("Ingresa tu usuario de lan");
+  let password = prompt("Ingresa tu contraseña.");
 
-// expreciones regulares.
+  const usuarioNuevo = new Usuario(usuario, password);
+  usuarioNuevo.exitosoLogeo();
+  usuarios.push(usuario);
+
+  disyuntiva = prompt(
+    "¿Quiere crear un nuevo Usuario?\n SI para continuar\nESC para salir"
+  );
+} while (disyuntiva.toUpperCase() != "ESC");
+
+for (let i = 0; i < usuarios.length; i++) {
+  console.log(i + "-" + usuarios[i]);
+}
+
+// usuarios.forEach((usuarioNuevo, i) => {
+//   console.log(i + "-" + usuarioNuevo);
+// });
+
+// expreciones regulares buscar.
