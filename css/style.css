@@ -4,15 +4,9 @@
   box-sizing: border-box;
 }
 .section__ingreso {
-  background: rgb(10, 64, 187);
-  background: linear-gradient(
-    90deg,
-    rgba(10, 64, 187, 1) 0%,
-    rgba(119, 125, 187, 1) 30%,
-    rgba(0, 169, 202, 1) 70%,
-    rgba(70, 228, 60, 1) 100%
-  );
+  background-color: #1e1e1e;
   height: 100vh;
+  color: whitesmoke;
 }
 .section__ingreso--container {
   width: 200px;
@@ -21,6 +15,7 @@
   align-items: center;
   justify-content: center;
   color: whitesmoke;
+  text-align: center;
 }
 .section__ingreso--title {
   display: flex;
@@ -28,11 +23,22 @@
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
 }
-.btn a {
+.botones {
+  text-decoration: none;
+  background-color: #117a5c;
+  height: 2rem;
+  width: 6rem;
+  border-radius: 0.5rem;
+  color: whitesmoke;
+}
+.botones a {
   text-decoration: none;
   color: whitesmoke;
 }
-
+.botones a:hover {
+  color: whitesmoke;
+  font-weight: bold;
+}
 .section__ingreso--title span {
   color: whitesmoke;
   font-family: "Montserrat", sans-serif;
@@ -54,18 +60,46 @@
   object-fit: contain;
   height: 20rem;
 }
+/* financiacion */
 .section__financiacion {
-  background: rgb(10, 64, 187);
-  background: linear-gradient(
-    90deg,
-    rgba(10, 64, 187, 1) 0%,
-    rgba(119, 125, 187, 1) 30%,
-    rgba(0, 169, 202, 1) 70%,
-    rgba(70, 228, 60, 1) 100%
-  );
-  height: 100vh;
-  color: whitesmoke;
+  font-family: "Roboto", sans-serif;
+}
+.section__tabla {
+  padding-bottom: 2rem;
+}
+.section__botones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2rem;
+  padding-top: 1rem;
 }
 .prueba {
   display: flex;
+}
+.section__titulos {
+  text-align: center;
+  font-weight: bold;
+  padding-bottom: 1rem;
+}
+.section__precio {
+  padding-bottom: 2rem;
+}
+.section__precio--color input {
+  color: whitesmoke;
+  background-color: #117a5c;
+}
+.section__memoria {
+  background-color: white;
+  height: 20rem;
+  width: 100%;
+}
+select {
+  color: whitesmoke;
+  background-color: #117a5c;
+  border-radius: 0.3rem;
+  padding: 5px 5px;
+}
+option {
+  color: whitesmoke;
+  background-color: #117a5c;
 }

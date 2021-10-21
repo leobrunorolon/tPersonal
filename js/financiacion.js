@@ -3,16 +3,24 @@
  * Realizar tabla de calculo segun los datos de los coeficientes que son constante,
  */
 // array prueba con tarjeta para englobarlas posicion tarjetas 0=cuotas z/ 1=cuotas 3/ 2=cuotas 6/ 3=cuotas 9/ 4 = cuotas 12 /5 = cuotas 18.
-const visaTarjeta = [0, 1, 1, 0, 1.172064, 1.383348];
-const mastercardTarjeta = [0, 1, 1, 0, 1.155376, 1.355931];
-const solTarjeta = [0, 1, 1.231673, 0, 1.231673, 1.442347];
-const naranjaTarjeta = [1.128409, 0, 1, 0, 0, 0];
-const dpfTarjeta = [0, 1, 1.074, 1.1424, 1.2143, 0];
+const visaTarjeta = [undefined, 1, 1, undefined, 1.172064, 1.383348];
+const mastercardTarjeta = [undefined, 1, 1, undefined, 1.155376, 1.355931];
+const solTarjeta = [undefined, 1, 1.231673, undefined, 1.231673, 1.442347];
+const naranjaTarjeta = [
+  1.128409,
+  undefined,
+  1,
+  undefined,
+  undefined,
+  undefined,
+];
+const dpfTarjeta = [undefined, 1, 1.074, 1.1424, 1.2143, undefined];
 
 // impuestos
 const impIndividuo = Number(1);
 const impEmpresa = Number(1.33);
 
+document.getElementById(`botonConsulta`).addEventListener(`click`, Tabla);
 /*
  * Funciones, datos que necesito procesar de la mejor forma, estaba pensando en realizarlo por tarjeta ya que es mi dato clave, para el cambio de coeficiente.
  */
@@ -24,11 +32,16 @@ class Tabla {
     this.tarjeta = tarjeta;
     this.cuotas = cuotas;
 
+    this.precio = document.getElementById("precioEquipo").value;
+    this.condImp = document.getElementById("condImp").value;
+    this.tarjeta = document.getElementById("tarjetas").value;
+    this.cuotas = document.getElementById("cuotas").value;
+
     this.total = 0;
     this.totalInteres = 0;
     this.totalCuotas = 0;
   }
-  precioTotal() {
+  condicionimpositiva() {
     if (this.condImp == "EMPRESA") {
       this.precio = this.precio * impEmpresa;
       return this.precio;
@@ -36,181 +49,151 @@ class Tabla {
       this.precio = this.precio * impIndividuo;
       return this.precio;
     }
-    /*probando como hacer  para que salgan todas en all*/
-    switch (this.tarjeta) {
-      case 1: {
-        if (this.cuotas == 1) {
+  }
+  coeficiente(coeficientes) {
+    this.total = this.precio * coeficientes;
+    document.write("$" + this.total + "<br>");
+    return this.total;
+  }
+  tarjetasCuotas(tarjeta, cuotas) {
+    switch (tarjeta) {
+      case "VISA": {
+        if (cuotas == "ALL") {
           for (let i = 0; i < visaTarjeta.length; i++) {
             this.total = this.precio * visaTarjeta[i];
             document.write("$" + this.total + "<br>");
-            this.diferencia();
-            this.lasCuotas();
           }
           break;
-        } else if (this.cuotas == 2) {
-          this.total = this.precio * visaTarjeta[0];
-          document.write("$" + this.total);
+        } else if (cuotas == "Z") {
+          this.coeficiente(visaTarjeta[0]);
           break;
-        } else if (this.cuotas == 3) {
-          this.total = this.precio * visaTarjeta[1];
-          document.write("$" + this.total);
+        } else if (cuotas == "3") {
+          this.coeficiente(visaTarjeta[1]);
           break;
-        } else if (this.cuotas == 6) {
-          this.total = this.precio * visaTarjeta[2];
-          document.write("$" + this.total);
+        } else if (cuotas == "6") {
+          this.coeficiente(visaTarjeta[2]);
           break;
-        } else if (this.cuotas == 9) {
-          this.total = this.precio * visaTarjeta[3];
-          document.write("$" + this.total);
+        } else if (cuotas == "9") {
+          this.coeficiente(visaTarjeta[3]);
           break;
-        } else if (this.cuotas == 12) {
-          this.total = this.precio * visaTarjeta[4];
-          document.write("$" + this.total);
+        } else if (cuotas == "12") {
+          this.coeficiente(visaTarjeta[4]);
           break;
-        } else if (this.cuotas == 18) {
-          this.total = this.precio * visaTarjeta[5];
-          document.write("$" + this.total);
-          break;
+        } else if (cuotas == "18") {
+          this.coeficiente(visaTarjeta[5]);
         }
       }
-
-      case 2: {
-        if (this.cuotas == 1) {
+      case "MASTERCAR": {
+        if (cuotas == "ALL") {
           for (let i = 0; i < mastercardTarjeta.length; i++)
             this.total = this.precio * mastercardTarjeta[i];
           document.write("$" + this.total);
           break;
-        } else if (this.cuotas == 2) {
-          this.total = this.precio * mastercardTarjeta[0];
-          document.write("$" + this.total);
+        } else if (cuotas == "Z") {
+          this.coeficiente(mastercardTarjeta[0]);
           break;
-        } else if (this.cuotas == 3) {
-          this.total = this.precio * mastercardTarjeta[1];
-          document.write("$" + this.total);
+        } else if (cuotas == "3") {
+          this.coeficiente(mastercardTarjeta[1]);
           break;
-        } else if (this.cuotas == 6) {
-          this.total = this.precio * mastercardTarjeta[2];
-          document.write("$" + this.total);
+        } else if (cuotas == "6") {
+          this.coeficiente(mastercardTarjeta[2]);
           break;
-        } else if (this.cuotas == 9) {
-          this.total = this.precio * mastercardTarjeta[3];
-          document.write("$" + this.total);
+        } else if (cuotas == "9") {
+          this.coeficiente(mastercardTarjeta[3]);
           break;
-        } else if (this.cuotas == 12) {
-          this.total = this.precio * mastercardTarjeta[4];
-          document.write("$" + this.total);
+        } else if (cuotas == "12") {
+          this.coeficiente(mastercardTarjeta[4]);
           break;
-        } else if (this.cuotas == 18) {
-          this.total = this.precio * mastercardTarjeta[5];
-          document.write("$" + this.total);
+        } else if (cuotas == "18") {
+          this.coeficiente(mastercardTarjeta[5]);
           break;
         }
       }
-
-      case 3: {
-        if (this.cuotas == 1) {
+      case "SOL": {
+        if (cuotas == "ALL") {
           for (let i = 0; i < solTarjeta.length; i++)
             this.total = this.precio * solTarjeta[i];
           document.write("$" + this.total);
           break;
-        } else if (this.cuotas == 2) {
-          this.total = this.precio * solTarjeta[0];
-          document.write("$" + this.total);
+        } else if (cuotas == "Z") {
+          this.coeficiente(solTarjeta[0]);
           break;
-        } else if (this.cuotas == 3) {
-          this.total = this.precio * solTarjeta[1];
-          document.write("$" + this.total);
+        } else if (cuotas == "3") {
+          this.coeficiente(solTarjeta[1]);
           break;
-        } else if (this.cuotas == 6) {
-          this.total = this.precio * solTarjeta[2];
-          document.write("$" + this.total);
+        } else if (cuotas == "6") {
+          this.coeficiente(solTarjeta[2]);
           break;
-        } else if (this.cuotas == 9) {
-          this.total = this.precio * solTarjeta[3];
-          document.write("$" + this.total);
+        } else if (cuotas == "9") {
+          this.coeficiente(solTarjeta[3]);
           break;
-        } else if (this.cuotas == 12) {
-          this.total = this.precio * visaTarjeta[4];
-          document.write("$" + this.total);
+        } else if (cuotas == "12") {
+          this.coeficiente(solTarjeta[4]);
           break;
-        } else if (this.cuotas == 18) {
-          this.total = this.precio * solTarjeta[5];
-          document.write("$" + this.total);
+        } else if (cuotas == "18") {
+          this.coeficiente(solTarjeta[5]);
           break;
         }
       }
-
-      case 4: {
-        if (this.cuotas == 1) {
+      case "NARANJA": {
+        if (cuotas == "ALL") {
           for (let i = 0; i < naranjaTarjeta.length; i++)
             this.total = this.precio * naranjaTarjeta[i];
           document.write("$" + this.total);
           break;
-        } else if (this.cuotas == 2) {
-          this.total = this.precio * naranjaTarjeta[0];
-          document.write("$" + this.total);
+        } else if (cuotas == "Z") {
+          this.coeficiente(naranjaTarjeta[0]);
           break;
-        } else if (this.cuotas == 3) {
-          this.total = this.precio * naranjaTarjeta[1];
-          document.write("$" + this.total);
+        } else if (cuotas == "3") {
+          this.coeficiente(naranjaTarjeta[1]);
           break;
-        } else if (this.cuotas == 6) {
-          this.total = this.precio * naranjaTarjeta[2];
-          document.write("$" + this.total);
+        } else if (cuotas == "6") {
+          this.coeficiente(naranjaTarjeta[2]);
           break;
-        } else if (this.cuotas == 9) {
-          this.total = this.precio * naranjaTarjeta[3];
-          document.write("$" + this.total);
+        } else if (cuotas == "9") {
+          this.coeficiente(naranjaTarjeta[3]);
           break;
-        } else if (this.cuotas == 12) {
-          this.total = this.precio * naranjaTarjeta[4];
-          document.write("$" + this.total);
+        } else if (cuotas == "12") {
+          this.coeficiente(naranjaTarjeta[4]);
           break;
-        } else if (this.cuotas == 18) {
-          this.total = this.precio * naranjaTarjeta[5];
-          document.write("$" + this.total);
+        } else if (cuotas == "18") {
+          this.coeficiente(naranjaTarjeta[5]);
           break;
         }
       }
-
-      case 5: {
-        if (this.cuotas == 1) {
+      case "DPF": {
+        if (cuotas == "ALL") {
           for (let i = 0; i < dpfTarjeta.length; i++)
             this.total = this.precio * dpfTarjeta[i];
           document.write("$" + this.total);
           break;
-        } else if (this.cuotas == 2) {
-          this.total = this.precio * dpfTarjeta[0];
-          document.write("$" + this.total);
+        } else if (cuotas == "Z") {
+          this.coeficiente(dpfTarjeta[0]);
           break;
-        } else if (this.cuotas == 3) {
-          this.total = this.precio * dpfTarjeta[1];
-          document.write("$" + this.total);
+        } else if (cuotas == "3") {
+          this.coeficiente(dpfTarjeta[1]);
           break;
-        } else if (this.cuotas == 6) {
-          this.total = this.precio * dpfTarjeta[2];
-          document.write("$" + this.total);
+        } else if (cuotas == "6") {
+          this.coeficiente(dpfTarjeta[2]);
           break;
-        } else if (this.cuotas == 9) {
-          this.total = this.precio * dpfTarjeta[3];
-          document.write("$" + this.total);
+        } else if (cuotas == "9") {
+          this.coeficiente(dpfTarjeta[3]);
           break;
-        } else if (this.cuotas == 12) {
-          this.total = this.precio * dpfTarjeta[4];
-          document.write("$" + this.total);
+        } else if (cuotas == "12") {
+          this.coeficiente(dpfTarjeta[4]);
           break;
-        } else if (this.cuotas == 18) {
-          this.total = this.precio * dpfTarjeta[5];
-          document.write("$" + this.total);
+        } else if (cuotas == "18") {
+          this.coeficiente(dpfTarjeta[5]);
           break;
         }
       }
-
-      default: {
-        console.error("operacion invalida");
+      default:
         break;
-      }
     }
+  }
+  precioTotal() {
+    condicionimpositiva();
+    tarjetasCuotas(this.tarjeta, this.cuotas);
   }
   diferencia() {
     this.totalInteres = this.total - this.precio;
@@ -223,32 +206,12 @@ class Tabla {
 }
 
 const precioEquipo = [];
-let disyuntiva = "";
 
-do {
-  let precio = Number(prompt("Ingresa el precio del Equipo"));
-  let condImp = Number(
-    prompt("Ingresa condicion impositiva\n 1 EMPRESA\n 2 INDIVIDUO")
-  );
-  let tarjeta = Number(
-    prompt(
-      "Ingresa el medio de pago\n 1 VISA\n 2 MASTERCARD\n 3NARANJA\n 4 SOL\n 5 DPF"
-    )
-  );
-  let cuotas = Number(
-    prompt("Ingresa el numero de cuotas\n 1 All\n 2 Z\n3\n6\n12\n18")
-  );
-
-  const nuevaConsulta = new Tabla(precio, condImp, tarjeta, cuotas);
-  nuevaConsulta.precioTotal();
-  nuevaConsulta.diferencia();
-  nuevaConsulta.lasCuotas();
-  precioEquipo.push(precio);
-
-  disyuntiva = prompt(
-    "¿Quiere crear un nuevo Usuario?\n SI para continuar\nESC para salir"
-  );
-} while (disyuntiva.toUpperCase() != "ESC");
+const nuevaConsulta = new Tabla(precio, condImp, tarjeta, cuotas);
+nuevaConsulta.precioTotal();
+nuevaConsulta.diferencia();
+nuevaConsulta.lasCuotas();
+precioEquipo.push(precio);
 
 for (let i = 0; i < precioEquipo.length; i++) {
   console.log(i + "-" + precioEquipo[i]);
